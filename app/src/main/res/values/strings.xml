@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Wetestmvpkotlin</string>
+    <string name="textview_default">内容：</string>
+    <string name="text_button_change">点击更换</string>
+    <string name="text_button_rxbuspost">点击测试Rxbus发送</string>
+    <string name="text_button_rxbusreceive">点击测试Rxbus接受</string>
+</resources>
