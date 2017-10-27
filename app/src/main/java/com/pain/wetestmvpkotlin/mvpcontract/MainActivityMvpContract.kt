@@ -60,20 +60,20 @@ class MainPresenter(context: Context,view: MainView): BaseMvpPresenterImpl<MainV
     }
     fun loadData(){
         getView()!!.showProgress()
-       val observer=object : DisposableObserver<Long>() {
-           override fun onError(e: Throwable?) {
-           }
+        val observer=object :DisposableObserver<Long>(){
+            override fun onNext(t: Long) {
+                mainMode.numberStr= Random().nextInt(100).toString()
+                getView()!!.showData(mainMode)
+            }
 
-           override fun onComplete() {
-               getView()!!.hideProgress()
-           }
+            override fun onError(e: Throwable) {
+            }
 
-           override fun onNext(t: Long?) {
-               mainMode.numberStr= Random().nextInt(100).toString()
-               getView()!!.showData(mainMode)
-           }
+            override fun onComplete() {
+                getView()!!.hideProgress()
+            }
 
-       }
+        }
         compositeDisposable.add(observer)
         Observable.interval(3,TimeUnit.SECONDS).take(1)
                 .subscribeOn(Schedulers.io())
@@ -84,14 +84,14 @@ class MainPresenter(context: Context,view: MainView): BaseMvpPresenterImpl<MainV
     fun testNetRequest() {
         getView()!!.showProgress()
         var observer=object :DisposableObserver<ApiResponse<ArticleTypeBean>>(){
-            override fun onError(e: Throwable?) {
+            override fun onError(e: Throwable) {
                 Log.e("here",e.toString())
             }
             override fun onComplete() {
                 getView()!!.hideProgress()
             }
 
-            override fun onNext(t: ApiResponse<ArticleTypeBean>?) {
+            override fun onNext(t: ApiResponse<ArticleTypeBean>) {
                 Toast.makeText(getContext(),"haha",Toast.LENGTH_SHORT).show()
             }
         }

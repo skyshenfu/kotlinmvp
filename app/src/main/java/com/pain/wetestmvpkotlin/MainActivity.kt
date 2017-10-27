@@ -52,14 +52,11 @@ class MainActivity : BaseActivity() ,MainView,View.OnClickListener{
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
-        button= findViewById(R.id.button_change) as Button?
-        rxPostButton=findViewById(R.id.button_rxbuspost) as Button?
-        rxReceiveButton=findViewById(R.id.button_rxbusreceive) as Button?
-        netButton=findViewById(R.id.button_net) as Button?
-        textView= findViewById(R.id.textview) as TextView?
-
-
+        button= findViewById(R.id.button_change)
+        rxPostButton=findViewById(R.id.button_rxbuspost)
+        rxReceiveButton=findViewById(R.id.button_rxbusreceive)
+        netButton=findViewById(R.id.button_net)
+        textView= findViewById(R.id.textview)
         button!!.setOnClickListener(this)
         rxPostButton!!.setOnClickListener(this)
         rxReceiveButton!!.setOnClickListener(this)

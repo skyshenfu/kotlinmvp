@@ -25,7 +25,8 @@ class App:Application(){
                 .observeOn(AndroidSchedulers.mainThread())
                 .subscribeOn(Schedulers.io())
                 .subscribe(object :Consumer<Event>{
-                    override fun accept(t: Event?) {
+
+                    override fun accept(t: Event) {
                         if (t!!.name == "hello")
                             Toast.makeText(this@App,"hello",Toast.LENGTH_SHORT).show()
                     }
